@@ -1,0 +1,34 @@
+import re
+sentence=raw_input()
+wordnum=int(raw_input())
+
+sen_list=sentence.spit()
+words=dict()
+for i in range(0,wordnum):
+    words[raw_input()]=-1
+    
+word_limit=200001
+
+max=-1
+min=-1
+
+for i in range(0,len(sen_list)):
+    word=re.sub('[A-Za-z]','',sen_list[i])
+    word=word.lower()
+    
+    if word not in words:
+        continue
+    
+    words[word]=i
+    
+    x=min(words.values())
+    y=max(words.values())
+    
+    if (x==-1):
+        continue
+    else:
+        if (word_limit>y-x+1):
+            max,min,word_limit=x,y,y-x+1
+            
+    if word_limit==len(words):
+        break
